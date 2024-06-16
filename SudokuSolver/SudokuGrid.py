@@ -18,3 +18,7 @@ class SudokuCell:
 		value = "_" if len(self.value) > 1 else self.value
 		repr_str = "SudokuCell({}, {}, \"{}\")".format(self.row, self.col, value)
 		return repr_str
+
+	def pop(self, number):
+		'''If the number is present in the value list, remove it from the value list"
+  		return None
