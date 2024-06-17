@@ -9,3 +9,11 @@ if __name__ == "__main__":
 	print("2", sc2)
 	print("3", sc3)
 
+	sc3.pop('5')
+	print(sc3)
+
+	sc2.pop('5')
+	print(sc2)
+
+	sr1 = SudokuRow(5, "3_1___59_")
+
