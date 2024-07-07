@@ -16,4 +16,4 @@ if __name__ == "__main__":
 	print(sc2)
 
 	sr1 = SudokuRow(5, "3_1___59_")
-
+	print(sr1)
