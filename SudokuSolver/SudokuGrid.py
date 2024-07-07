@@ -46,3 +46,29 @@ class SudokuRow:
         print_str = ("SudokuRow Details:\n\tRow: {}\n\tValues: {}"
                      .format(self.row, print_str))
         return print_str
+
+
+class SudokuGrid:
+    def __init__(self, values):
+        self.rows = []
+        self._values = values
+        for row, rvalue in enumerate(values.split("\n")):
+            self.rows.append(SudokuRow(row, rvalue))
+
+    def __repr__(self):
+        return "SudokuGrid('{}')".format(self._values)
+
+    def __str__(self):
+        print_str = ""
+        for row, rvalue in enumerate(self._values.split("\n")):
+            temp_str = rvalue[:3] + '|' + rvalue[3:6] + '|' + rvalue[6:]
+            temp_str = temp_str.replace("_", " ")
+            if ((row + 1) % 3) == 0:
+                temp_str = temp_str + "\n" + "-" * 11 + "\n"
+            else:
+                temp_str = temp_str + "\n"
+
+            print_str = print_str + temp_str
+
+        print_str = "SudokuGrid:\n{}".format(print_str)
+        return print_str
