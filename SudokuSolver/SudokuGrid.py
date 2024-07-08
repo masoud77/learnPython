@@ -1,3 +1,6 @@
+from itertools import product
+
+
 class SudokuCell:
 
     def __init__(self, row, col, value):
@@ -49,6 +52,8 @@ class SudokuRow:
 
 
 class SudokuGrid:
+    CENTER_CELLS = [1, 4, 7]
+
     def __init__(self, values):
         self.rows = []
         self._values = values
@@ -72,3 +77,24 @@ class SudokuGrid:
 
         print_str = "SudokuGrid:\n{}".format(print_str)
         return print_str
+
+    def getRowCells(self, row):
+        return self.rows[row].cells
+
+    def getColCells(self, col):
+        cells = [self.rows[i].cells[col] for i in range(9)]
+        return cells
+
+    @staticmethod
+    def getSquareCentre(row, col):
+        for r, c in product(SudokuGrid.CENTER_CELLS, repeat=2):
+            if abs(row - r) <= 1 and abs(col - c) <= 1:
+                return r, c
+
+    def getCell(self, row, col):
+        return self.rows[row].cells[col]
+
+    def getSquareCells(self, row, col):
+        center_row, center_col = SudokuGrid.getSquareCentre(row, col)
+        return [self.getCell(cell_row, cell_col) for cell_row in range(center_row - 1, center_row + 2)
+                for cell_col in range(center_col - 1, center_col + 2)]

@@ -21,4 +21,8 @@ if __name__ == "__main__":
 	grid="""4_______5\n____416__\n_8163____\n___3__1__\n19____8_7\n_54__7__6\n825_1976_\n___8__59_\n61_57324_"""
 	sg = SudokuGrid(grid)
 
+	print(sg.getRowCells(1))
+	print(sg.getColCells(0))
+
 	print(sg)
+	print(sg.getSquareCells(7, 7))
